@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cade Garner | LoanDepot</title>
+  <style>
+    :root {
+      --bg-primary: #121212;
+      --bg-secondary: #1e1e1e;
+      --accent: #4caf50;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0b0;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--bg-secondary);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .apply-button {
+      background-color: var(--accent);
+      color: var(--text-primary);
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .apply-button:hover {
+      background-color: #3e8e41;
+    }
+
+    .section {
+      max-width: 900px;
+      margin: auto;
+      padding: 3rem 2rem;
+    }
+
+    .section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .card {
+      background-color: var(--bg-secondary);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      margin-bottom: 2rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 0.75rem;
+      border: none;
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      background-color: #2a2a2a;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: var(--accent);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #3e8e41;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background-color: var(--bg-secondary);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cade Garner | LoanDepot</h1>
+    <a class="apply-button" href="https://www.loandepot.com/loan-officers/cadegarner" target="_blank">Apply</a>
+  </header>
+
+  <div class="section">
+    <h2>Mortgage Calculator</h2>
+    <div class="card">
+      <label for="amount">Loan Amount ($)</label>
+      <input type="number" id="amount" placeholder="e.g. 300000">
+
+      <label for="interest">Interest Rate (%)</label>
+      <input type="number" id="interest" placeholder="e.g. 6.5">
+
+      <label for="years">Loan Term (Years)</label>
+      <input type="number" id="years" placeholder="e.g. 30">
+
+      <button onclick="calculateMortgage()">Calculate</button>
+      <p id="result"></p>
+    </div>
+
+    <h2>Let's Connect</h2>
+    <div class="card">
+      <form action="mailto:cadegarner@loandepot.com" method="POST" enctype="text/plain">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>Team Number: (480) 405-7700 | NMLS ID: 2548705</p>
+  </footer>
+
+  <!-- Chatbot Integration Placeholder -->
+  <script>
+    function calculateMortgage() {
+      const principal = parseFloat(document.getElementById('amount').value);
+      const interestRate = parseFloat(document.getElementById('interest').value) / 100 / 12;
+      const payments = parseInt(document.getElementById('years').value) * 12;
+
+      const x = Math.pow(1 + interestRate, payments);
+      const monthly = (principal * x * interestRate) / (x - 1);
+
+      if (!isNaN(monthly)) {
+        document.getElementById('result').innerText = `Estimated Monthly Payment: $${monthly.toFixed(2)}`;
+      } else {
+        document.getElementById('result').innerText = 'Please enter valid inputs.';
+      }
+    }
+  </script>
+
+  <script>
+    // Chatbot embed script placeholder
+    (function() {
+      var chat = document.createElement("script");
+      chat.src = "https://examplechatbot.com/embed.js";
+      chat.async = true;
+      document.body.appendChild(chat);
+    })();
+  </script>
+</body>
+</html>
